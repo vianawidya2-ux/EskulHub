@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Ini buat nambahin kolom eskul setelah kolom role
-            $table->string('eskul')->nullable()->after('role');
+            // Kita matikan baris di bawah ini agar tidak bentrok (duplicate column)
+            // $table->string('eskul')->nullable()->after('role');
         });
     }
 
@@ -23,8 +23,8 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Ini buat hapus kolomnya kalau amit-amit eror
-            $table->dropColumn('eskul');
+            // Ini juga dimatikan agar tetap sinkron
+            // $table->dropColumn('eskul');
         });
     }
 };
